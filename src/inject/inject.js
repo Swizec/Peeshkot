@@ -9,13 +9,13 @@ chrome.extension.sendMessage({}, function(response) {
 });
 
 function findNotices(callback) {
-    var selector = "#allow_cookies_container,#cookieGuardMsg,.cc-cookies";
+    var selector = "#allow_cookies_container,#cookieGuardMsg,.cc-cookies,#huk_cookie_prefernce_panel";
 
     callback($(selector));
 }
 
 function handleNotices(notices) {
-    var allowSelector = ".cc-cookie-accept,#authoriseCookies,.choice-agree";
+    var allowSelector = ".cc-cookie-accept,#authoriseCookies,.choice-agree,#EU_OPIN_CANCEL";
 
     // click allow buttons
     notices.find(allowSelector).click();
