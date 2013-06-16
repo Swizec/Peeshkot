@@ -44,13 +44,14 @@ function findButtons(notices) {
                       , 'button'].join(','),
         button = notices.find(buttonSelectors);
 
-        if (button.length) {
+        if (button && button.length) {
             return button;
         }
 
         var nodes = notices.find(buttonNodes);
-        if (!nodes.length) {
+        if (!nodes || !nodes.length) {
             console.error('No nodes found');
+            return [];
         }
         $.each(nodes, function (item) {
             var item = $(item),
