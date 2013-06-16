@@ -9,16 +9,17 @@ chrome.extension.sendMessage({}, function(response) {
 });
 
 function findNotices(callback) {
-    var selector = "#allow_cookies_container,#cookieGuardMsg,.cc-cookies,#huk_cookie_prefernce_panel";
+    var selector = "#allow_cookies_container,#cookieGuardMsg,.cc-cookies,#huk_cookie_prefernce_panel,#cookiesWarning,#cookiewarning";
 
     callback($(selector));
 }
 
 function handleNotices(notices) {
-    var allowSelector = ".cc-cookie-accept,#authoriseCookies,.choice-agree,#EU_OPIN_CANCEL";
+    var allowSelector = ".cc-cookie-accept,#authoriseCookies,.choice-agree,#EU_OPIN_CANCEL,#floaterAgree";
 
     // click allow buttons
     notices.find(allowSelector).click();
 
-    //notices.css("display", "none");
+    // last resort
+    notices.css("display", "none");
 }

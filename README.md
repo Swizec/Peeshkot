@@ -17,6 +17,8 @@ Scripts
  * [CookieCutr](http://cookiecuttr.com/)
  * [CookieGuard](http://cookieguard.eu/)
  * [eu-cookie-opt-in](https://github.com/creativeaura/eu-cookie-opt-in)
+ * [CookieWarning](https://github.com/Scott-Herbert/CookieWarning)
+ * a script that uses #cookiesWarning
 
 Sites
 ------
