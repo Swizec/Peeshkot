@@ -15,7 +15,7 @@ function findNotices(callback) {
 }
 
 function handleNotices(notices) {
-    var allowSelector = ".cc-cookie-accept,#authoriseCookies";
+    var allowSelector = ".cc-cookie-accept,#authoriseCookies,.choice-agree";
 
     // click allow buttons
     notices.find(allowSelector).click();
