@@ -23,7 +23,9 @@ Scripts
 
 Sites
 ------
- * 24ur
+ * [24ur](http://24ur.com)
+ * [RTV Slo](http://rtvslo.si/)
+ * [Bolha](bolha.com)
 
 
 License
