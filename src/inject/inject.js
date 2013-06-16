@@ -3,11 +3,22 @@ chrome.extension.sendMessage({}, function(response) {
 	if (document.readyState === "complete") {
 	    clearInterval(readyStateCheckInterval);
             
-	    // ----------------------------------------------------------
-	    // This part of the script triggers when page is done loading
-	    console.log("Hello. This message was sent from scripts/inject.js");
-	    // ----------------------------------------------------------
-            alert("Hello they are!");
+            findNotices(handleNotices);
 	}
     }, 10);
 });
+
+function findNotices(callback) {
+    var selector = "#allow_cookies_container,#cookieGuardMsg,.cc-cookies";
+
+    callback($(selector));
+}
+
+function handleNotices(notices) {
+    var allowSelector = ".cc-cookie-accept,#authoriseCookies";
+
+    // click allow buttons
+    notices.find(allowSelector).click();
+
+    //notices.css("display", "none");
+}

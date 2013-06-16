@@ -28,6 +28,7 @@
         "*://*/*"
       ],
       "js": [
+        "js/zepto.min.js",
         "src/inject/inject.js"
       ]
     }
