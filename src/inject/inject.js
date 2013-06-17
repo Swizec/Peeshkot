@@ -56,6 +56,7 @@ function findNotices(callback) {
                    , '#cookielaw'
                    , '#fp_cookieMessageContainer'
                    , '#cookieBar'
+                   , '#cookie-compliance'
                    , '#id_cookieconsent'
                    , '#cookiesInitialDialog'
                    , '#cookiesdirective'
@@ -65,7 +66,12 @@ function findNotices(callback) {
                    , '.optanon-alert-box-wrapper'
                    , '.identity-noticebar'
                    , '.optanon-alert-box-wrapper'
-                   ].join(',');
+                   , '#banner'
+                   ].join(','),
+        keywords = [ 'cookie'
+                   , 'piskot'
+                   , 'piškot'
+                   ];
 
     callback($(selector));
 }
@@ -80,6 +86,7 @@ function findButtons(notices) {
                           , '#cookieok_check'
                           , '.iAgree'
                           , '.cookieAgree'
+                          , '#cookie-compliance-submit'
                           , '.cc-link'
                           , '.hide-bar'
                           , '.optanon-alert-box-close'
