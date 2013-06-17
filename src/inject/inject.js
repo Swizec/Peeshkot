@@ -69,54 +69,65 @@ function findNotices(callback) {
 
 function findButtons(notices) {
     var buttonSelectors = [ '#epb-ok'
-                        , '.cc-cookie-accept'
-                        , '#authoriseCookies'
-                        , '.choice-agree'
-                        , '#EU_OPIN_CANCEL'
-                        , '#floaterAgree'
-                        , '#cookieok_check'
-                        , '.iAgree'
-                        , '.cookieAgree'
-                        , '.cc-link'
-                        , '.cc-approve-button-thissite'
-                        , 'img[src*="cookies_button"]' ].join(','),
+                          , '.cc-cookie-accept'
+                          , '#authoriseCookies'
+                          , '.choice-agree'
+                          , '#EU_OPIN_CANCEL'
+                          , '#floaterAgree'
+                          , '#cookieok_check'
+                          , '.iAgree'
+                          , '.cookieAgree'
+                          , '.cc-link'
+                          , '.cc-approve-button-thissite'
+                          , 'img[src*="cookies_button"]' ].join(','),
         buttonText =  [ 'Ok'
                       , 'V redu'
                       , 'Accept'
                       , 'I agree'
                       , 'Dovoli piškotke'
                       , 'Sem seznanjen'
+                      , 'Shrani'
                       , 'Se strinjam' ].join(' '),
         buttonNodes = [ 'a'
                       , 'button'].join(','),
         button = notices.find(buttonSelectors);
 
-        if (button && button.length) {
+    if (button && button.length) {
+        if (button.length === 1) {
             return button;
         }
-
-        var nodes = notices.find(buttonNodes);
-        if (!nodes || !nodes.length) {
-            console.error('No nodes found');
-            return [];
-        }
-        button = $.each(nodes, function (index, item) {
-            var item = $(item),
-                itemText = $.trim(item.text()),
-                rText = new RegExp(itemText);
+        return $.map(button, function (item) {
+            var $item = $(item),
+                itemText = $.trim($item.text()),
+                rText = new RegExp(itemText, "gi");
 
             if (rText.test(buttonText)) {
-                return item;
+                return $item;
             }
         });
-        return button.length ? button : [];
+    }
+
+    var nodes = notices.find(buttonNodes);
+    if (!nodes || !nodes.length) {
+        console.error('No nodes found');
+        return [];
+    }
+    return $.map(nodes, function (item) {
+        var $item = $(item),
+            itemText = $.trim($item.text()),
+            rText = new RegExp(itemText, "gi");
+
+        if (rText.test(buttonText)) {
+            return $item;
+        }
+    });
 }
 
 function handleNotices(notices) {
     var button = findButtons(notices);
 
     if (button && button.length) {
-        button.click();
+        $(button).click();
     } else {
         notices.hide()
                .css({ display: 'none' , visibility: 'hidden' });
