@@ -62,6 +62,9 @@ function findNotices(callback) {
                    , '.cookieBanner'
                    , '.cookieStandard'
                    , '#bauerCookiePolicy'
+                   , '.optanon-alert-box-wrapper'
+                   , '.identity-noticebar'
+                   , '.optanon-alert-box-wrapper'
                    ].join(',');
 
     callback($(selector));
@@ -78,6 +81,8 @@ function findButtons(notices) {
                           , '.iAgree'
                           , '.cookieAgree'
                           , '.cc-link'
+                          , '.hide-bar'
+                          , '.optanon-alert-box-close'
                           , '.cc-approve-button-thissite'
                           , 'img[src*="cookies_button"]' ].join(','),
         buttonText =  [ 'Ok'
