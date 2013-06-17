@@ -2,23 +2,19 @@
 <style type="text/css">
 	#mainPopup {
 		padding: 10px;
-		height: 200px;
-		width: 400px;
+		height: 100px;
+		width: 300px;
 		font-family: Helvetica, Ubuntu, Arial, sans-serif;
 	}
 	h1 {
 		font-size: 2em;
 	}
 </style>
-
 <div id="mainPopup">
-<h1>Peeshkot <img src="" /></h1>
-<p>Hello :)</p>
+<p>Hello from Peeshkot :)</p>
 <p>There's nothing here yet. One day you'll be able to opt-in/out of
 specific sites.</p>
 </div>
 
-<script>
-  console.log(chrome.extension.getURL("icons/peeshkot128.png"));
-  $("h1 img").attr("src", chrome.extension.getURL("icons/peeshkot128.png");
-</script>
+
+<script src="page_action.js"></script>

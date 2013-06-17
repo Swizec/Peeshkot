@@ -21,6 +21,7 @@
     "default_icon": "icons/peeshkot19.png",
     "default_title": "Peeshkot",
     "default_popup": "src/page_action/page_action.html"
+
   },
   "content_scripts": [
     {
