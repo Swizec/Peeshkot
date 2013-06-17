@@ -20,6 +20,48 @@ function findNotices(callback) {
                    , '#cookieok_bar'
                    , '#epbar'
                    , '#cc-notification'
+                   , '#boxZgodaNaCookie'
+                   , '#cookieMonsterWrapper'
+                   , '#cookiePolicyPopup'
+                   , '#fp_cookieMessageContainer'
+                   , '#WP-cookie-info'
+                   , '.cookieTooltip'
+                   , 'div[class^="cookie-alert"]'
+                   , 'div[id="ciasteczka"]'
+                   , 'div[id="cookie-info"]'
+                   , 'div[id="cookieInfoMsgWrapper"]'
+                   , 'div[id="cookiepolicydiv"]'
+                   , 'div[class^="pea_cook_wrapper"]'
+                   , 'div[id="cookies-info"]'
+                   , '#cookielaw'
+                   , '#cookiewarn'
+                   , '#cookiesMessageBanner'
+                   , '#bbccookies'
+                   , '.notification.cookie'
+                   , '#cookiePolicy'
+                   , '#fp_cookieMessageContainer'
+                   , '#cookieBar'
+                   , '.divCookieWarning'
+                   , '#cookie-policy-container'
+                   , '.footer-cookies-policy'
+                   , '#cookieNotification'
+                   , '#cookie-bar'
+                   , '#noScriptCookies'
+                   , '#block-cookie-info'
+                   , '.cookie-message'
+                   , '#cookieMessageWrapper'
+                   , '#cookie-bar'
+                   , '#bauerCookiePolicy'
+                   , '#cookie-banner'
+                   , '#cookielaw'
+                   , '#fp_cookieMessageContainer'
+                   , '#cookieBar'
+                   , '#id_cookieconsent'
+                   , '#cookiesInitialDialog'
+                   , '#cookiesdirective'
+                   , '.cookieBanner'
+                   , '.cookieStandard'
+                   , '#bauerCookiePolicy'
                    ].join(',');
 
     callback($(selector));
@@ -36,55 +78,16 @@ function findButtons(notices) {
                         , '.iAgree'
                         , '.cookieAgree'
                         , '.cc-link'
-                        , '#boxZgodaNaCookie'
-                        , '#cookieMonsterWrapper'
-                        , '#cookiePolicyPopup'
-                        , '#fp_cookieMessageContainer'
-                        , '#WP-cookie-info'
-                        , '.cookieTooltip'
-                        , 'div[class^="cookie-alert"]'
-                        , 'div[id="ciasteczka"]'
-                        , 'div[id="cookie-info"]'
-                        , 'div[id="cookieInfoMsgWrapper"]'
-                        , 'div[id="cookiepolicydiv"]'
-                        , 'div[class^="pea_cook_wrapper"]'
-                        , 'div[id="cookies-info"]'
-                        , '#cookielaw'
-                        , '#cookiewarn'
-                        , '#cookiesMessageBanner'
-                        , '#bbccookies'
-                        , '.notification.cookie'
-                        , '#cookiePolicy'
-                        , '#fp_cookieMessageContainer'
-                        , '#cookieBar'
-                        , '.divCookieWarning'
-                        , '#cookie-policy-container'
-                        , '.footer-cookies-policy'
-                        , '#cookieNotification'
-                        , '#cookie-bar'
-                        , '#noScriptCookies'
-                        , '#block-cookie-info'
-                        , '.cookie-message'
-                        , '#cookieMessageWrapper'
-                        , '#cookie-bar'
-                        , '#bauerCookiePolicy'
-                        , '#cookie-banner'
-                        , '#cookielaw'
-                        , '#fp_cookieMessageContainer'
-                        , '#cookieBar'
-                        , '#id_cookieconsent'
-                        , '#cookiesInitialDialog'
-                        , '#cookiesdirective'
-                        , '.cookieBanner'
-                        , '.cookieStandard'
-                        , '#bauerCookiePolicy'
+                        , '.cc-approve-button-thissite'
                         , 'img[src*="cookies_button"]' ].join(','),
         buttonText =  [ 'Ok'
                       , 'V redu'
                       , 'Accept'
                       , 'I agree'
+                      , 'Dovoli piškotke'
+                      , 'Sem seznanjen'
                       , 'Se strinjam' ].join(' '),
-        buttonNodes = [ 'a',
+        buttonNodes = [ 'a'
                       , 'button'].join(','),
         button = notices.find(buttonSelectors);
 
@@ -97,7 +100,7 @@ function findButtons(notices) {
             console.error('No nodes found');
             return [];
         }
-        $.each(nodes, function (item) {
+        button = $.each(nodes, function (index, item) {
             var item = $(item),
                 itemText = $.trim(item.text()),
                 rText = new RegExp(itemText);
@@ -106,12 +109,13 @@ function findButtons(notices) {
                 return item;
             }
         });
+        return button.length ? button : [];
 }
 
 function handleNotices(notices) {
     var button = findButtons(notices);
 
-    if (button.length) {
+    if (button && button.length) {
         button.click();
     } else {
         notices.hide()
