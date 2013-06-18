@@ -18,6 +18,7 @@ function findNotices(callback) {
                    , '#cookiesWarning'
                    , '#cookiewarning'
                    , '#cookieok_bar'
+                   , '#cccwr'
                    , '#epbar'
                    , '#cc-notification'
                    , '#boxZgodaNaCookie'
@@ -88,6 +89,7 @@ function findButtons(notices) {
                           , '.cookieAgree'
                           , '#cookie-compliance-submit'
                           , '.cc-link'
+                          , '#cctoggle'
                           , '.hide-bar'
                           , '.optanon-alert-box-close'
                           , '.cc-approve-button-thissite'
@@ -121,7 +123,6 @@ function findButtons(notices) {
 
     var nodes = notices.find(buttonNodes);
     if (!nodes || !nodes.length) {
-        console.error('No nodes found');
         return [];
     }
     return $.map(nodes, function (item) {
