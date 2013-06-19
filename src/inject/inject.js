@@ -137,6 +137,8 @@ function findButtons(notices) {
 }
 
 function handleNotices(notices) {
+    chrome.runtime.sendMessage({foundNotices: notices.size()});
+
     var button = findButtons(notices);
 
     if (button && button.length) {
