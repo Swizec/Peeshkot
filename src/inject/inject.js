@@ -68,6 +68,7 @@ function findNotices(callback) {
                    , '.optanon-alert-box-wrapper'
                    , '.identity-noticebar'
                    , '.optanon-alert-box-wrapper'
+                   , '#cow_overlay_inside'
                    ].join(','),
         keywords = [ 'cookie'
                    , 'piskot'
@@ -97,7 +98,7 @@ function findButtons(notices) {
                           , '.optanon-alert-box-close'
                           , '.cc-approve-button-thissite'
                           , '.continue'
-                          , 'img[src*="cookies_button"]' ].join(','),
+                          , 'img[src*="cookies_button"]'].join(','),
         buttonText =  [ 'Ok'
                       , 'V redu'
                       , 'Accept'
@@ -106,7 +107,8 @@ function findButtons(notices) {
                       , 'Dovoli piškotke'
                       , 'Sem seznanjen'
                       , 'Shrani'
-                      , 'Se strinjam' ].join(' '),
+                      , 'Se strinjam'
+                      , 'Da, sprejemam'].join(' '),
         buttonNodes = [ 'a'
                       , 'button'].join(','),
         button = notices.find(buttonSelectors);
