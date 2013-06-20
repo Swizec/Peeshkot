@@ -68,7 +68,6 @@ function findNotices(callback) {
                    , '.optanon-alert-box-wrapper'
                    , '.identity-noticebar'
                    , '.optanon-alert-box-wrapper'
-                   , '#banner'
                    ].join(','),
         keywords = [ 'cookie'
                    , 'piskot'
