@@ -8,11 +8,27 @@
 //example of using a message handler from the inject scripts
 chrome.extension.onMessage.addListener(
   function(request, sender, sendResponse) {
-      console.log(request);
-
       if (request.foundNotices > 0) {
-          chrome.pageAction.show(sender.tab.id);
+          activate_page_action(sender);
+      }else{
+          chrome.pageAction.hide(sender.tab.id);
       }
       
       sendResponse();
   });
+
+function activate_page_action(sender) {
+    chrome.pageAction.setTitle({tabId: sender.tab.id, 
+                                title: chrome.i18n.getMessage("warnings_slain")});
+    chrome.pageAction.show(sender.tab.id);
+}
+
+function ghetto_template(html, vars) {
+    $(vars).map(function (key) {
+        var regex = new RegExp("\{\{"+key+"\}\}", 'g');
+
+        html = html.replace(regex, vars[key]);
+    });
+
+    return html;
+}
