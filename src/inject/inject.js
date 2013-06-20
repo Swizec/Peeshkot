@@ -73,9 +73,11 @@ function findNotices(callback) {
         keywords = [ 'cookie'
                    , 'piskot'
                    , 'piškot'
-                   ];
+                    ].map(function(keyword) {
+                        return 'div[class*="' + keyword + '"],div[id*="' + keyword + '"]';
+                    }).join(',');
 
-    callback($(selector));
+    callback($(selector + ',' + keywords));
 }
 
 function findButtons(notices) {
@@ -95,6 +97,7 @@ function findButtons(notices) {
                           , '.hide-bar'
                           , '.optanon-alert-box-close'
                           , '.cc-approve-button-thissite'
+                          , '.continue'
                           , 'img[src*="cookies_button"]' ].join(','),
         buttonText =  [ 'Ok'
                       , 'V redu'
