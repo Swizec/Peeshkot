@@ -96,7 +96,9 @@ function findNotices(callback) {
                    , 'piškot'
                     ].map(function(keyword) {
                         return ['div:attrContains("id|' + keyword + '")', 'div:attrContains("class|' + keyword + '")'];
-                    });
+                    }),
+        // Hehe, finance.si :) (this will prevent clicking on opt-out buttons)
+        falsePositives = [ '#no-more-cookies' ].join(',');
 
     // `combined` will be a collection of elements matched by `selector` and ones matched by :attrContains("attr|value") filter
     // NB: this is a hack, because :attrContains only works once in a selector
@@ -106,7 +108,7 @@ function findNotices(callback) {
         combined = combined.concat(gen);
     });
 
-    callback($(combined).unique());
+    callback($(combined).unique().not($(falsePositives)));
 }
 
 function findButtons(notices) {
