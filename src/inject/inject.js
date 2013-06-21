@@ -128,16 +128,7 @@ function findButtons(notices) {
                           , '.cc-approve-button-thissite'
                           , '.continue'
                           , 'img[src*="cookies_button"]'].join(','),
-        buttonText =  [ 'Ok'
-                      , 'V redu'
-                      , 'Accept'
-                      , 'Razumem'
-                      , 'I agree'
-                      , 'Dovoli piškotke'
-                      , 'Sem seznanjen'
-                      , 'Shrani'
-                      , 'Se strinjam'
-                      , 'Da, sprejemam'].join(' '),
+        buttonTextRe = new RegExp("Ok|V redu|Accept|Razumem|I agree|Dovoli|Seznanjen|Shrani|(?:se )?strinjam(?: se)?|spreje?m[ai]", "i"),
         buttonNodes = [ 'a'
                       , 'button'].join(','),
         button = notices.find(buttonSelectors);
@@ -147,13 +138,9 @@ function findButtons(notices) {
             return button;
         }
         return $.map(button, function (item) {
-            var $item = $(item),
-                itemText = $.trim($item.text()),
-                rText = new RegExp(itemText, "gi");
-
-            if (rText.test(buttonText)) {
+            var $item = $(item);
+            if (buttonTextRe.test($.trim($item.text())))
                 return $item;
-            }
         });
     }
 
@@ -162,13 +149,9 @@ function findButtons(notices) {
         return [];
     }
     return $.map(nodes, function (item) {
-        var $item = $(item),
-            itemText = $.trim($item.text()),
-            rText = new RegExp(itemText, "gi");
-
-        if (rText.test(buttonText)) {
+        var $item = $(item);
+        if (buttonTextRe.test($.trim($item.text())))
             return $item;
-        }
     });
 }
 
