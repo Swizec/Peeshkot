@@ -1,3 +1,24 @@
+// I dunno why this won't work if I move it to a separate file (.js won't even load)
+;(function($) {
+    // adds `:attrContains("attr|value")` filter for CSS selectors
+    // The filter [attr*="value"] is case sensitive, this one is not.
+    // Also note, that the filter can only be used once in a selector (could not find an elegant way to untangle zepto to make it work properly).
+    $.extend($.expr[':'], {
+        attrContains: function(idx, _, spec) {
+            var opts = spec.split('|');
+            var attr = $(this).attr(opts[0]);
+            if (attr != null && attr.toLowerCase().indexOf(opts[1].toLowerCase()) > -1) return this;
+        }
+    });
+
+    $.fn.unique = function() {
+        var that = this;
+        return this.filter(function(idx) {
+            return that.indexOf(this) == idx;
+        });
+    };
+})(Zepto);
+
 chrome.extension.sendMessage({}, function(response) {
     var readyStateCheckInterval = setInterval(function() {
         if (document.readyState === "complete") {
@@ -74,10 +95,18 @@ function findNotices(callback) {
                    , 'piskot'
                    , 'piškot'
                     ].map(function(keyword) {
-                        return 'div[class*="' + keyword + '"],div[id*="' + keyword + '"]';
-                    }).join(',');
+                        return ['div:attrContains("id|' + keyword + '")', 'div:attrContains("class|' + keyword + '")'];
+                    });
 
-    callback($(selector + ',' + keywords));
+    // `combined` will be a collection of elements matched by `selector` and ones matched by :attrContains("attr|value") filter
+    // NB: this is a hack, because :attrContains only works once in a selector
+    var combined = $(selector);
+    $.map(Array.prototype.concat.apply([], keywords), function(keyword, index) {
+        var gen = $(keyword);
+        combined = combined.concat(gen);
+    });
+
+    callback($(combined).unique());
 }
 
 function findButtons(notices) {
