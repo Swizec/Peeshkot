@@ -28,6 +28,7 @@
       ],
       "js": [
         "js/zepto.min.js",
+        "js/selector.js",
         "src/inject/inject.js"
       ]
     }
