@@ -7,8 +7,8 @@
             }
             }, 10);
     });
-    var holderSelectors = ['#allow_cookies_container', '#cookieGuardMsg', '.cc-cookies', '.cookies-header', '#huk_cookie_prefernce_panel', '#cookies', '#cookie-law-wrapper', '#avcn_wrapperInner', '#cookiesWarning', '#cookiewarning', '#cookieok_bar', '#cccwr', '#epbar', '#icanhascookie', '#cc-notification', '#boxZgodaNaCookie', '#cookieMonsterWrapper', '#cookiePolicyPopup', '#fp_cookieMessageContainer', '#WP-cookie-info', '.cookieTooltip', 'div[class^="cookie-alert"]', 'div[id="ciasteczka"]', 'div[id="cookie-info"]', 'div[id="cookieInfoMsgWrapper"]', 'div[id="cookiepolicydiv"]', 'div[class^="pea_cook_wrapper"]', 'div[id="cookies-info"]', '#cookielaw', '#cookiewarn', '#cookiesMessageBanner', '#bbccookies', '.notification.cookie', '#cookiePolicy', '#fp_cookieMessageContainer', '#cookieBar', '.divCookieWarning', '#cookie-policy-container', '.footer-cookies-policy', '#cookieNotification', '#cookie-bar', '#noScriptCookies', '#block-cookie-info', '.cookie-message', '#cookieMessageWrapper', '#cookie-bar', '#bauerCookiePolicy', '#cookie-banner', '#cookielaw', '#fp_cookieMessageContainer', '#cookieBar', '#cookie-compliance', '#id_cookieconsent', '#cookiesInitialDialog', '#cookiesdirective', '.cookieBanner', '.cookieStandard', '#bauerCookiePolicy', '.optanon-alert-box-wrapper', '.identity-noticebar', '.optanon-alert-box-wrapper', '#cookies-alert', '#cow_overlay_inside'].join(', '),
-        buttonsSelectors = ['#epb-ok', '.cc-cookie-accept', '#authoriseCookies', '.choice-agree', '#EU_OPIN_CANCEL', '#floaterAgree', '#cookieok_check', '.iAgree', '.cookieAgree', '#cookie-compliance-submit', '.cc-link', '#cctoggle', '#ichok', '.hide-bar', '.optanon-alert-box-close', '.cookies-yes', '.cc-approve-button-thissite', '.continue', 'img[src*="cookies_button"]', '#avcn_agreeButton', '#cookieTermsagree'].join(', '),
+    var holderSelectors = ['#allow_cookies_container', '#cookieGuardMsg', '.cc-cookies', '.cookies-header', '#huk_cookie_prefernce_panel', '#cookies', '#cookie-law-wrapper', '#avcn_wrapperInner', '#cookiesWarning', '#cookiewarning', '#cookieok_bar', '#cccwr', '#epbar', '#icanhascookie', '#cc-notification', '#boxZgodaNaCookie', '#cookieMonsterWrapper', '#cookiePolicyPopup', '#fp_cookieMessageContainer', '#WP-cookie-info', '.cookieTooltip', 'div[class^="cookie-alert"]', 'div[id="ciasteczka"]', 'div[id="cookie-info"]', 'div[id="cookieInfoMsgWrapper"]', 'div[id="cookiepolicydiv"]', 'div[class^="pea_cook_wrapper"]', 'div[id="cookies-info"]', '#cookielaw', '#cookiewarn', '#cookiesMessageBanner', '#bbccookies', '.notification.cookie', '#cookiePolicy', '#fp_cookieMessageContainer', '#cookieBar', '.divCookieWarning', '#divCookie', '#cookie-policy-container', '.footer-cookies-policy', '#cookieNotification', '#cookie-bar', '#noScriptCookies', '#block-cookie-info', '.cookie-message', '#cookieMessageWrapper', '#cookie-bar', '#bauerCookiePolicy', '#cookie-banner', '#cookielaw', '#fp_cookieMessageContainer', '#cookieBar', '#cookie-compliance', '#id_cookieconsent', '#cookiesInitialDialog', '#cookiesdirective', '.cookieBanner', '.cookieStandard', '#bauerCookiePolicy', '.optanon-alert-box-wrapper', '.identity-noticebar', '.optanon-alert-box-wrapper', '#cookies-alert', '#cow_overlay_inside', '.cookiesNotice'].join(', '),
+        buttonsSelectors = ['#epb-ok', '.cc-cookie-accept', '#authoriseCookies', '.choice-agree', '#EU_OPIN_CANCEL', '#floaterAgree', '#cookieok_check', '.iAgree', '.cookieAgree', '#cookie-compliance-submit', '.cc-link', '#cctoggle', '#ichok', '.hide-bar', '.optanon-alert-box-close', '.cookies-yes', '.cc-approve-button-thissite', '.continue', 'img[src*="cookies_button"]', '#avcn_agreeButton', '#cookieTermsagree', '#btncookie_ok', '.btncookie_ok'].join(', '),
         buttonText = ['Ok', 'V redu', 'Accept', 'Razumem', 'I agree', 'Dovoli piškotke', 'Sem seznanjen', 'Shrani', 'Strinjam se', 'Se strinjam', 'Da', 'Sprejemam', 'Nadaljuj', 'Sprejmi', 'Dovolim piškotke', 'Nadaljuj z branjem', 'Shrani nastavitve'],
         keywords = ['cookie', 'piskot', 'piškot' ],
         buttonNodes = ['a', 'button', 'input[type="submit"]', 'input[type="button"]'],
@@ -28,6 +28,7 @@
         ,   'vreme.zurnal24.si': {node: '#cookie', button: '#cookiebtn'}
         ,   'dogaja.se': {node: '#npm', button: 'a'}
         ,   'rtvslo.si': {node: '#cookies', button: 'img[src*="cookies_button"]'}
+        ,   'abanka.si': {node: '#divCookie', button: '#btncookie_ok'}
         ,   '24ur.com': {node: '#allow_cookies_container', button: '.choice-agree'}
         ,   'vizita.si': {node: '#allow_cookies_container', button: '.btn-primary'}
         ,   'zadovoljna.si': {node: '#allow_cookies_container', button: '.btn-primary'}
@@ -43,6 +44,7 @@
         ,   'shrani.najdi.si': {node: '.cc-cookies', button: '.cc-cookie-accept'}
         ,   'zurnal24.si': {node: '#cookie_law_notice_container', button: '.agree_to_cookies'}
         ,   'finance.si': {node: '#cow_overlay_inside', button: '.buttonize:first-child'}
+        ,   'ringaraja.net': {node: '.cookiesNotice', button: '#okNotice'}
         ,   'google.si': {node: '#epbar', button: '#epb-ok'}
         };
 
