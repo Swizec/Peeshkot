@@ -11,6 +11,12 @@ An inexhaustive list of supported cookie scripts and sites that use a
 homegrown solution. If you find a case where the extension doesn't
 work, please submit an issue or email swizec@swizec.com
 
+
+Download
+=========
+
+* [Chrome extension](https://chrome.google.com/webstore/detail/peeshkot/idfkeeahcifaocjonphgjmpmmfonahle)
+
 Scripts
 ------
 
@@ -59,6 +65,13 @@ Specific sites
 * [finance.si](http://finance.si)
 * [ringaraja.net](http://ringaraja.net)
 * [google.si](http://google.si)
+
+
+ToDo
+=========
+
+* Support other browsers (Firefox, Opera, Safari, Internet Explorer (?))
+* Add more websites
 
 License
 ========
