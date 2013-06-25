@@ -70,6 +70,7 @@ Specific sites
 ToDo
 =========
 
+* Write tests
 * Support other browsers (Firefox, Opera, Safari, Internet Explorer (?))
 * Add more websites
 
