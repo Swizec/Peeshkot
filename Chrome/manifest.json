@@ -12,7 +12,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "js/zepto.min.js",
+      "libs/zepto.min.js",
       "src/bg/background.js"
     ],
     "persistent": false
@@ -28,8 +28,8 @@
         "*://*/*"
       ],
       "js": [
-        "js/zepto.min.js",
-        "src/inject/inject.js"
+        "libs/zepto.min.js",
+        "libs/peeshkot.js"
       ]
     }
   ]
