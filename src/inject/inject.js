@@ -100,13 +100,19 @@
     };
     Peeshkot.prototype.validateSingleElement = function (element, words) {
         element = $(element);
-        var elementText = $.trim(element.text() || element.val()).toLowerCase(),
-            isValid = $.map(words, function(word) {
-                    var rText = new RegExp(word, "gi");
-                    if (rText.test(elementText)) {
-                        return word;
-                    }
-                });
+        var elementText = element.text() || element.val(),
+            trimmedText, isValid;
+
+        if (!elementText) {
+            return false;
+        }
+        trimmedText = $.trim(elementText).toLowerCase(),
+        isValid = $.map(words, function(word) {
+            var rText = new RegExp(word, "gi");
+            if (rText.test(trimmedText)) {
+                return word;
+            }
+        });
         return !!isValid.length;
     };
     Peeshkot.prototype.handleMyCookie = function () {
