@@ -1,6 +1,6 @@
-var pageMod = require("page-mod"),
-    self = require("self"),
-    tabs = require("tabs");
+var pageMod = require("sdk/page-mod"),
+    self = require("sdk/self"),
+    tabs = require("sdk/tabs");
 
 pageMod.PageMod({
     include: "*",
