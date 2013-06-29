@@ -39,8 +39,8 @@ Thumbs.db
 
 # Local ignores #
 ###################
-icons
+
 libs
-/icons
+
 /libs
 /addon-sdk
