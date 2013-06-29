@@ -13,12 +13,12 @@ chrome.extension.onMessage.addListener(
       }else{
           chrome.pageAction.hide(sender.tab.id);
       }
-      
+
       sendResponse();
   });
 
 function activate_page_action(sender) {
-    chrome.pageAction.setTitle({tabId: sender.tab.id, 
+    chrome.pageAction.setTitle({tabId: sender.tab.id,
                                 title: chrome.i18n.getMessage("warnings_slain")});
     chrome.pageAction.show(sender.tab.id);
 }

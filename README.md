@@ -16,6 +16,7 @@ Download
 =========
 
 * [Chrome extension](https://chrome.google.com/webstore/detail/peeshkot/idfkeeahcifaocjonphgjmpmmfonahle)
+* [Firefox extension]()
 
 Scripts
 ------

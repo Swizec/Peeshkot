@@ -6,6 +6,5 @@ pageMod.PageMod({
     include: "*",
     contentScriptWhen: 'end',
     contentScriptFile: [self.data.url('zepto.min.js'), self.data.url('peeshkot.js')],
-    onAttach: function(worker) {
-    }
+    contentURL: self.data.url('icons/peeshkot16.png'),
 });

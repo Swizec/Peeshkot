@@ -1,7 +1,9 @@
 {
     "license": "GPL",
-    "name": "Peeshkot",
-    "author": "Swizec & hyperNURb",
+    "name": "peeshkot",
+    "author": "Swizec & eewan",
+    "version": "0.1.0",
+    "icon": "icons/peeshkot48.png",
     "description": "Get rid of annoying EU cookie law notices and automatically opt-in where needed.",
     "id": ""
 }
