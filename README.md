@@ -75,6 +75,25 @@ ToDo
 * Support other browsers (Firefox, Opera, Safari, Internet Explorer (?))
 * Add more websites
 
+
+Development setup (Mac only for now)
+=========
+
+* Clone repo
+* run `./run.sh` to make symlinks
+* `git submodule update --init`
+
+Firefox
+------
+* `cd addon-sdk`
+* `source bin/activate` - Now you should be on _addon-sdk virtualenv_
+* `cd ../Firefox`
+* `cfx run`
+
+Chrome
+------
+
+
 License
 ========
 

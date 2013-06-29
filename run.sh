@@ -3,10 +3,18 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ## Making symlinks
 echo "Cleaning up..."
-rm $DIR/icons
-rm $DIR/libs
-rm $DIR/Firefox/icons
-rm $DIR/Firefox/data
+if [ -e $DIR/icons ]; then
+    rm $DIR/icons
+fi
+if [ -e $DIR/libs ]; then
+    rm $DIR/libs
+fi
+if [ -e $DIR/Firefox/icons ]; then
+    rm $DIR/Firefox/icons
+fi
+if [ -e $DIR/Firefox/data ]; then
+    rm $DIR/Firefox/data
+fi
 
 echo "Making symlinks"
 
