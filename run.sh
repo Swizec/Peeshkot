@@ -10,9 +10,9 @@ echo "Making symlinks"
 # for easier development (ref: http://developer.chrome.com/extensions/external_extensions.html)
 
 # Root
-ln -s $DIR/Chrome/icons icons
-ln -s $DIR/Chrome/libs libs
+ln -s $DIR/Chrome/icons $DIR/icons
+ln -s $DIR/Chrome/libs $DIR/libs
 
 # Firefox
-ln -s $DIR/Chrome/icons Firefox/
-ln -s $DIR/Chrome/libs Firefox/data
+ln -s $DIR/Chrome/icons $DIR/Firefox/icons
+ln -s $DIR/Chrome/libs $DIR/Firefox/data
