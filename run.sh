@@ -2,6 +2,11 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ## Making symlinks
+echo "Cleaning up..."
+rm $DIR/icons
+rm $DIR/libs
+rm $DIR/Firefox/icons
+rm $DIR/Firefox/data
 
 echo "Making symlinks"
 
