@@ -48,7 +48,8 @@
         ,   'zurnal24.si': {node: '#cookie_law_notice_container', button: '.agree_to_cookies'}
         ,   'finance.si': {node: '#cow_overlay_inside', button: '.buttonize:first-child'}
         ,   'ringaraja.net': {node: '.cookiesNotice', button: '#okNotice'}
-        ,   'google.si': {node: '#epbar', button: '#epb-ok'}
+        ,   'google.si': {node: '#epbar', button: '#epb-ok'},
+        ,   'kinodvor.org': {node: '#scc-mask', button: '.scc-btn-confirm'}
         };
 
 
