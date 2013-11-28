@@ -1,5 +1,7 @@
 (function () {
+    var options;
     chrome.extension.sendMessage({}, function(response) {
+        options = response;
         var readyStateCheckInterval = setInterval(function() {
             if (document.readyState === "complete") {
                 clearInterval(readyStateCheckInterval);
@@ -15,7 +17,7 @@
         domainSpecific = {
             'banka-koper.si': {node: '#LoggingCookie', button: '.button'}
         ,   'bankain.si': {node: '#LoggingCookie', button: '.button'}
-        ,   'bolha.com': {node: '#cookiesWarning', button: '.iAgree'}
+        ,   'bolha.com': {node: '#cookiesWarning[rel="visible"]', button: '.iAgree'}
         ,   'nepremicnine.net': {node: '#cookieWarn', button: '#cookieTermsagree'}
         ,   'mojazaposlitev.si': {node: '#cookiePolicyCW', button: '.cookieAccept'}
         ,   'delo.si': {node: '#cboxWrapper', button: '#continue'}
@@ -54,16 +56,23 @@
 
 
     function Peeshkot() {
-        this.domainSpecific(domainSpecific);
+        var hostname = this.parseDomain().toLowerCase();
+        
+        if (options.ignoreDomains.indexOf(hostname) != -1)
+            return;
+
+        this.domainSpecific(domainSpecific, hostname);
         if (!this.holder && !this.button) {
             this.findHolder(holderSelectors, keywords);
             this.findButton(buttonsSelectors, buttonNodes, buttonText);
         }
         this.handleMyCookie();
     }
-    Peeshkot.prototype.domainSpecific = function (selectors) {
-        var hostname = window.location.hostname.replace(/www\./gi, ''),
-            elements = selectors[hostname];
+    Peeshkot.prototype.parseDomain = function () {
+        return window.location.hostname.replace(/www\./gi, '');
+    };
+    Peeshkot.prototype.domainSpecific = function (selectors, hostname) {
+        elements = selectors[hostname];
 
         if (elements) {
             this.holder = $(elements.node);
