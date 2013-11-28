@@ -2,70 +2,44 @@
 this.i18n = {
     "settings": {
         "en": "Settings",
-        "de": "Optionen"
+        "de": "Optionen",
+        "si": "Nastavitve"
     },
     "search": {
         "en": "Search",
-        "de": "Suche"
+        "de": "Suche",
+        "si": "Išči"
     },
     "nothing-found": {
         "en": "No matches were found.",
-        "de": "Keine Übereinstimmungen gefunden."
+        "de": "Keine Übereinstimmungen gefunden.",
+        "si": "Ni zadetkov"
     },
     
+    "exception" : {
+        "en": "Exceptions",
+        "si": "Izjeme"
+    },
+    "exceptionDesc" : {
+        "en": "Plugin won't work on domains in list.",
+        "si": "Dodatek ne bo deloval na domenah, ki so v seznamu."
+    },
     
-    
-    "information": {
-        "en": "Information",
-        "de": "Information"
+    "domain" : {
+        "en" : "Domain:",
+        "si" : "Domena:"
     },
-    "login": {
-        "en": "Login",
-        "de": "Anmeldung"
+    "excludedDomains" : {
+        "en" : "Excluded domains:",
+        "si" : "Izključene domene:"
     },
-    "username": {
-        "en": "Username:",
-        "de": "Benutzername:"
+
+    "add": {
+        "en" : "Add new domain",
+        "si" : "Dodaj novo domeno"
     },
-    "password": {
-        "en": "Password:",
-        "de": "Passwort:"
-    },
-    "x-characters": {
-        "en": "6 - 12 characters",
-        "de": "6 - 12 Zeichen"
-    },
-    "x-characters-pw": {
-        "en": "10 - 18 characters",
-        "de": "10 - 18 Zeichen"
-    },
-    "description": {
-        "en": "This is a description. You can write any text inside of this.<br>\
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\
-        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores\
-        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem\
-        ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et\
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\
-        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-        
-        "de": "Das ist eine Beschreibung. Du kannst hier beliebigen Text einfügen.<br>\
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut\
-        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores\
-        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem\
-        ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et\
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\
-        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-    },
-    "logout": {
-        "en": "Logout",
-        "de": "Abmeldung"
-    },
-    "enable": {
-        "en": "Enable",
-        "de": "Aktivieren"
-    },
-    "disconnect": {
-        "en": "Disconnect:",
-        "de": "Trennen:"
+    "remove": {
+        "en" : "Remove selected",
+        "si" : "Odstrani izbrano"
     }
 };

@@ -1,6 +1,6 @@
 {
   "name": "Peeshkot",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "manifest_version": 2,
   "description": "Get rid of annoying EU cookie law notices and automatically opt-in where needed.",
   "homepage_url": "https://github.com/Swizec/Peeshkot",
@@ -13,6 +13,7 @@
   "background": {
     "scripts": [
       "js/zepto.min.js",
+      "src/options_custom/lib/store.js",
       "src/bg/background.js"
     ],
     "persistent": false

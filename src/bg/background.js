@@ -1,9 +1,8 @@
 // if you checked "fancy-settings" in extensionizr.com, uncomment this lines
 
-// var settings = new Store("settings", {
-//     "sample_setting": "This is how you use Store.js to remember values"
-// });
-
+var settings = new Store("settings", {
+     "ignoreDomains": []
+});
 
 //example of using a message handler from the inject scripts
 chrome.extension.onMessage.addListener(
@@ -14,7 +13,7 @@ chrome.extension.onMessage.addListener(
           chrome.pageAction.hide(sender.tab.id);
       }
       
-      sendResponse();
+      sendResponse(settings.toObject());
   });
 
 function activate_page_action(sender) {

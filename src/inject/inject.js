@@ -1,5 +1,7 @@
 (function () {
+    var options;
     chrome.extension.sendMessage({}, function(response) {
+        options = response;
         var readyStateCheckInterval = setInterval(function() {
             if (document.readyState === "complete") {
                 clearInterval(readyStateCheckInterval);
@@ -15,7 +17,7 @@
         domainSpecific = {
             'banka-koper.si': {node: '#LoggingCookie', button: '.button'}
         ,   'bankain.si': {node: '#LoggingCookie', button: '.button'}
-        ,   'bolha.com': {node: '#cookiesWarning', button: '.iAgree'}
+        ,   'bolha.com': {node: '#cookiesWarning[rel="visible"]', button: '.iAgree'}
         ,   'nepremicnine.net': {node: '#cookieWarn', button: '#cookieTermsagree'}
         ,   'mojazaposlitev.si': {node: '#cookiePolicyCW', button: '.cookieAccept'}
         ,   'delo.si': {node: '#cboxWrapper', button: '#continue'}
@@ -24,7 +26,7 @@
         ,   'izklop.com': {node: '#cc-notification', button: '#cc-approve-button-thissite'}
         ,   'had.si': {node: '#cc-notification', button: '#cc-approve-button-thissite'}
         ,   'podnapisi.net': {node: '.ui-dialog', button: '.ui-button'}
-        ,   'avto.net': {node: '.ui-dialog', button: '#cookieTermsagree'}
+        ,   'avto.net': {node: '#cookieTerms', button: '#cookieTermsagree'}
         ,   'nlb.si': {node: '#cookies-alert', button: '.cookies-yes'}
         ,   'mercator.si': {node: '#_iCD', button: '.iCD_conf'}
         ,   'vreme.zurnal24.si': {node: '#cookie', button: '#cookiebtn'}
@@ -46,27 +48,37 @@
         ,   'najdi.si': {node: '.cc-cookies', button: '.cc-cookie-accept'}
         ,   'shrani.najdi.si': {node: '.cc-cookies', button: '.cc-cookie-accept'}
         ,   'zurnal24.si': {node: '#cookie_law_notice_container', button: '.agree_to_cookies'}
-        ,   'finance.si': {node: '#cow_overlay_inside', button: '.buttonize:first-child'}
+        ,   'finance.si': {node: 'div[id*="overlay"]', button: 'a[href*="cookie_accept.php"]'}
         ,   'ringaraja.net': {node: '.cookiesNotice', button: '#okNotice'}
         ,   'google.si': {node: '#epbar', button: '#epb-ok'}
         ,   'kinodvor.org': {node: '#scc-mask', button: '.scc-btn-confirm'}
+        ,   'podjetnik.si': {node: '#piskotki-da:hidden', holder: "#piskotki-msg", button: '#link-piskotki-da'}
+        ,   'feri.uni-mb.si': {node: '#eucookielaw', button: 'button[name="iagree"]'}
         };
 
 
     function Peeshkot() {
-        this.domainSpecific(domainSpecific);
+        var hostname = this.parseDomain().toLowerCase();
+        
+        if (options.ignoreDomains.indexOf(hostname) != -1)
+            return;
+
+        this.domainSpecific(domainSpecific, hostname);
         if (!this.holder && !this.button) {
             this.findHolder(holderSelectors, keywords);
             this.findButton(buttonsSelectors, buttonNodes, buttonText);
         }
         this.handleMyCookie();
     }
-    Peeshkot.prototype.domainSpecific = function (selectors) {
-        var hostname = window.location.hostname.replace(/www\./gi, ''),
-            elements = selectors[hostname];
+    Peeshkot.prototype.parseDomain = function () {
+        return window.location.hostname.replace(/www\./gi, '');
+    };
+    Peeshkot.prototype.domainSpecific = function (selectors, hostname) {
+        elements = selectors[hostname];
 
         if (elements) {
-            this.holder = $(elements.node);
+            this.holder = (elements.holder !== undefined && $(elements.node)[0]) ? $(elements.holder) : $(elements.node);
+            //this.holder = $(elements.node);
             this.button = $(elements.button, this.holder);
         }
     };
@@ -122,7 +134,10 @@
         return !!isValid.length;
     };
     Peeshkot.prototype.handleMyCookie = function () {
-        this.button && this.button.click();
-        this.holder && !this.button && this.holder.hide().css({ visibility: 'hidden', display: 'none' });
+        if (this.holder.is(":visible"))
+        {
+            this.button && this.button.click();
+            this.holder && !this.button && this.holder.hide().css({ visibility: 'hidden', display: 'none' });
+        }
     };
 }());

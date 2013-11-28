@@ -530,6 +530,102 @@
             return (this.element.get("value") || undefined);
         }
     });
+
+    Bundle.MultiListBox = new Class({
+        // label, options[{value, text}]
+        // action -> change
+        "Extends": Bundle,
+        
+        "createDOM": function () {
+            this.bundle = new Element("div", {
+                "class": "setting bundle list-box"
+            });
+            
+            this.container = new Element("div", {
+                "class": "setting container list-box"
+            });
+            
+            this.element = new Element("select", {
+                "class": "setting element list-box",
+                "size": "2"
+            });
+            
+            this.label = new Element("label", {
+                "class": "setting label list-box"
+            });
+            
+            this.params.options = settings.get(this.params.name) || this.params.options;
+
+            if (this.params.options === undefined) { this.params.options = []; return; }
+            this.params.options.each((function (option) {
+                this.params.searchString += option + "•";
+                
+                (new Element("option", {
+                    "value": option,
+                    "text": option
+                })).inject(this.element);
+            }).bind(this));
+        },
+
+        "setupDOM": function () {
+            if (this.params.label !== undefined) {
+                this.label.set("html", this.params.label);
+                this.label.inject(this.container);
+                this.params.searchString += this.params.label + "•";
+            }
+            
+            this.element.inject(this.container);
+            this.container.inject(this.bundle);
+        },
+
+        "addOption": function(option) {
+            option = option.toLowerCase();
+            if (option.length === 0 || this.params.options.indexOf(option) != -1)
+                return;
+
+            this.params.options.push(option);
+            
+            (new Element("option", {
+                    "value": option,
+                    "text": option
+                })).inject(this.element);
+
+            this.element.fireEvent("change");
+        },
+        "removeSelectedOption": function() {
+            if (this.params.options.length === 0)
+                return;
+
+            var index = this.element.selectedIndex;
+            if (index === -1)
+                return;
+
+            var option1 = this.params.options[index];
+            console.log(option1);
+
+            this.params.options.splice(index, 1);
+            
+            this.element.innerHTML = "";
+            this.params.options.each((function (option) {
+                this.params.searchString += option + "•";
+                
+                (new Element("option", {
+                    "value": option,
+                    "text": option
+                })).inject(this.element);
+            }).bind(this));
+
+            this.element.fireEvent("change");
+        },
+        
+        "get": function () {
+            var values = [];
+            this.params.options.each(function (option) {
+                values.push(option);
+            });
+            return values;
+        }
+    });
     
     Bundle.Textarea = new Class({
         // label, text, value
@@ -695,6 +791,7 @@
                 "slider": "Slider",
                 "popupButton": "PopupButton",
                 "listBox": "ListBox",
+                "multiListBox": "MultiListBox",
                 "radioButtons": "RadioButtons"
             };
             
