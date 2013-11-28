@@ -134,7 +134,10 @@
         return !!isValid.length;
     };
     Peeshkot.prototype.handleMyCookie = function () {
-        this.button && this.button.click();
-        this.holder && !this.button && this.holder.hide().css({ visibility: 'hidden', display: 'none' });
+        if (this.holder.is(":visible"))
+        {
+            this.button && this.button.click();
+            this.holder && !this.button && this.holder.hide().css({ visibility: 'hidden', display: 'none' });
+        }
     };
 }());
